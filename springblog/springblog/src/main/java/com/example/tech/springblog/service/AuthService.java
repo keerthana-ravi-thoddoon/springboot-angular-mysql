@@ -1,5 +1,6 @@
 package com.example.tech.springblog.service;
 
+import com.example.tech.springblog.dto.LoginRequest;
 import com.example.tech.springblog.dto.RegisterRequest;
 import com.example.tech.springblog.model.User;
 import com.example.tech.springblog.repository.UserRepository;
@@ -28,4 +29,8 @@ public class AuthService {
     }
 
 
+    //entry point for login request
+    public void login(LoginRequest loginRequest) {
+
+    }
 }

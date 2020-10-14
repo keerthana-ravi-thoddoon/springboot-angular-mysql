@@ -1,5 +1,6 @@
 package com.example.tech.springblog.controller;
 
+import com.example.tech.springblog.dto.LoginRequest;
 import com.example.tech.springblog.dto.RegisterRequest;
 import com.example.tech.springblog.service.AuthService;
 import com.sun.deploy.net.HttpResponse;
@@ -21,7 +22,11 @@ public class AuthController {
         System.out.println("in auth controller");
         authService.signup(registerRequest); //passing register request object to the service
         return new ResponseEntity(HttpStatus.OK);
+    }
 
+    @PostMapping("/login")
+    public void login(LoginRequest loginRequest){
+        authService.login(loginRequest);
 
     }
 }
