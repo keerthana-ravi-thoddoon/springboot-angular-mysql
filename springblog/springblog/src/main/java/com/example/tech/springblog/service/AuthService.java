@@ -5,6 +5,10 @@ import com.example.tech.springblog.dto.RegisterRequest;
 import com.example.tech.springblog.model.User;
 import com.example.tech.springblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +20,10 @@ public class AuthService {
     private UserRepository userRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    // login to perform authentication
+    @Autowired
+    private AuthenticationManager authenticationManager;
     public void signup(RegisterRequest registerRequest) {
         User user = new User(); // creating a new user to map all the fields from our request to out user object
         user.setUsername(registerRequest.getUsername());
@@ -31,6 +39,12 @@ public class AuthService {
 
     //entry point for login request
     public void login(LoginRequest loginRequest) {
+        // once login request passes through this method, user is authenticated
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),
+                loginRequest.getPassword()));
 
+        //storing the return type of authenticate method in spring security's security context
+        SecurityContextHolder.getContext().setAuthentication(authenticate);
+        //implementation of authentication process
     }
 }
