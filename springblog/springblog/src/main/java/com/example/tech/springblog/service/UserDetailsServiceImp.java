@@ -24,7 +24,7 @@ public class UserDetailsServiceImp implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //wrap User into another user object
-        User user = userRepository.findByUserName(username).orElseThrow(()->new UsernameNotFoundException
+        User user = userRepository.findByUsername(username).orElseThrow(()->new UsernameNotFoundException
                 ("User not found !!" + "-" + username));
 
         // creating Role_User authority to the method
