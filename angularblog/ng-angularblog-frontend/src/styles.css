@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+/* We mention to the project to look fot the boot strap here */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+{
+margin: 0;padding: 0; box-sizing: border-box;
+}
+
+html{
+  background-color: darkcyan;
+  color: white;
+  font-family: "Calibri Light";
+  font-weight: 300;
+  font-size: 20px;
+}

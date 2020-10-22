@@ -1,0 +1,18 @@
+.card-header{
+  padding: 5px 20px;
+  background-color: deepskyblue;
+
+}
+
+.title{
+  text-decoration: none;
+  color: white;
+  float: left;
+}
+
+.login, .register{
+  float: right;
+  text-decoration: none;
+  color: aliceblue;
+  padding-top: 5px;
+}
