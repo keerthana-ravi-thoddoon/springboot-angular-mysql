@@ -6,16 +6,15 @@ import com.example.tech.springblog.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/auth")
 public class AuthController {
     @Autowired
     private AuthService authService; // will throw an error if we do not give @Service in AuthService class
+
     @PostMapping("/signup")
     public ResponseEntity signup(@RequestBody RegisterRequest registerRequest){
         System.out.println("in auth controller");

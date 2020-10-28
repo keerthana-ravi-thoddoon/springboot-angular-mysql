@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/post/")
 public class PostController {
 
     @Autowired
     private PostService postService;
+
     @PostMapping
     public ResponseEntity createPost(@RequestBody PostDto postDto) {
         // invoke the create post method of the post service
@@ -25,6 +27,7 @@ public class PostController {
      public ResponseEntity<List<PostDto>> showAllPosts(){
         return new ResponseEntity(postService.showAllPosts(), HttpStatus.OK);
         }
+
      @GetMapping("/get/{id}")
      public ResponseEntity<PostDto> getSinglePost(@PathVariable @RequestBody Long id){
         return new ResponseEntity(postService.readSinglePost(id), HttpStatus.OK);
